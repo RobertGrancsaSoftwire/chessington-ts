@@ -16,10 +16,26 @@ export default class Pawn extends Piece {
         let direction = this.player === player.WHITE ? 1 : -1;
 
         const currentSquare = board.findPiece(this);
+        const oneSquareInFront = Square.at(currentSquare.row + direction, currentSquare.col);
+        const pieceOneSquareInFront = board.getPiece(oneSquareInFront);
 
-        moves.push(Square.at(currentSquare.row + direction, currentSquare.col));
+        if (!!pieceOneSquareInFront && pieceOneSquareInFront.player != board.currentPlayer) {
+            moves.push(oneSquareInFront);
+        } else if (pieceOneSquareInFront === undefined) {
+            moves.push(oneSquareInFront);
+        } else {
+            return moves;
+        }
+
         if (!this.hasMoved) {
-            moves.push(Square.at(currentSquare.row + direction * 2, currentSquare.col));
+            const twoSquareInFront = Square.at(currentSquare.row + direction * 2, currentSquare.col);
+            const pieceTwoSquareInFront = board.getPiece(twoSquareInFront);
+
+            if (!!pieceTwoSquareInFront && pieceTwoSquareInFront.player != board.currentPlayer) {
+                moves.push(twoSquareInFront);
+            } else if (pieceTwoSquareInFront === undefined) {
+                moves.push(twoSquareInFront);
+            }
         }
 
         return moves;
