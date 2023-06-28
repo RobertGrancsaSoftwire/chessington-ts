@@ -23,7 +23,7 @@ export default class Knight extends Piece {
         moves.push(Square.at(currentSquare.row - 1, currentSquare.col - 2));
         moves.push(Square.at(currentSquare.row - 1, currentSquare.col + 2));
 
-        moves = moves.filter((move: Square) => {
+        return moves.filter((move: Square) => {
             if (!(move.row >= 0 && move.row < 8 && move.col >= 0 && move.col < 8)) {
                 return false;
             }
@@ -34,8 +34,6 @@ export default class Knight extends Piece {
             }
 
             return !!piece && piece.player != this.player && !(piece instanceof King);
-        })
-
-        return moves;
+        });
     }
 }
