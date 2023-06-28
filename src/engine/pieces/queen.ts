@@ -3,6 +3,7 @@ import Player from '../player';
 import Board from '../board';
 import Bishop from "./bishop";
 import Square from "../square";
+import King from "./king";
 
 export default class Queen extends Piece {
     public constructor(player: Player) {
@@ -19,7 +20,7 @@ export default class Queen extends Piece {
             let nextSquare = Square.at(i, j);
             let pieceOnSquare = board.getPiece(nextSquare);
             if (pieceOnSquare !== undefined) {
-                if (pieceOnSquare.player != this.player) {
+                if (pieceOnSquare.player != this.player && !(pieceOnSquare instanceof King)) {
                     moves.push(nextSquare);
                 }
                 break;
@@ -35,7 +36,7 @@ export default class Queen extends Piece {
             let nextSquare = Square.at(i, j);
             let pieceOnSquare = board.getPiece(nextSquare);
             if (pieceOnSquare !== undefined) {
-                if (pieceOnSquare.player != this.player) {
+                if (pieceOnSquare.player != this.player && !(pieceOnSquare instanceof King)) {
                     moves.push(nextSquare);
                 }
                 break;
@@ -51,7 +52,7 @@ export default class Queen extends Piece {
             let nextSquare = Square.at(i, j);
             let pieceOnSquare = board.getPiece(nextSquare);
             if (pieceOnSquare !== undefined) {
-                if (pieceOnSquare.player != this.player) {
+                if (pieceOnSquare.player != this.player && !(pieceOnSquare instanceof King)) {
                     moves.push(nextSquare);
                 }
                 break;
@@ -67,7 +68,7 @@ export default class Queen extends Piece {
             let nextSquare = Square.at(i, j);
             let pieceOnSquare = board.getPiece(nextSquare);
             if (pieceOnSquare !== undefined) {
-                if (pieceOnSquare.player != this.player) {
+                if (pieceOnSquare.player != this.player && !(pieceOnSquare instanceof King)) {
                     moves.push(nextSquare);
                 }
                 break;
@@ -81,7 +82,7 @@ export default class Queen extends Piece {
             let nextSquare = Square.at(currentSquare.row, i);
             let pieceOnSquare = board.getPiece(nextSquare);
             if (pieceOnSquare !== undefined) {
-                if (pieceOnSquare.player != this.player) {
+                if (pieceOnSquare.player != this.player && !(pieceOnSquare instanceof King)) {
                     moves.push(nextSquare);
                 }
                 break;
@@ -92,7 +93,7 @@ export default class Queen extends Piece {
             let nextSquare = Square.at(currentSquare.row, i);
             let pieceOnSquare = board.getPiece(nextSquare);
             if (pieceOnSquare !== undefined) {
-                if (pieceOnSquare.player != this.player) {
+                if (pieceOnSquare.player != this.player && !(pieceOnSquare instanceof King)) {
                     moves.push(nextSquare);
                 }
                 break;
@@ -104,7 +105,7 @@ export default class Queen extends Piece {
             let nextSquare = Square.at(i, currentSquare.col);
             let pieceOnSquare = board.getPiece(nextSquare);
             if (pieceOnSquare !== undefined) {
-                if (pieceOnSquare.player != this.player) {
+                if (pieceOnSquare.player != this.player && !(pieceOnSquare instanceof King)) {
                     moves.push(nextSquare);
                 }
                 break;
@@ -115,7 +116,7 @@ export default class Queen extends Piece {
             let nextSquare = Square.at(i, currentSquare.col);
             let pieceOnSquare = board.getPiece(nextSquare);
             if (pieceOnSquare !== undefined) {
-                if (pieceOnSquare.player != this.player) {
+                if (pieceOnSquare.player != this.player && !(pieceOnSquare instanceof King)) {
                     moves.push(nextSquare);
                 }
                 break;
