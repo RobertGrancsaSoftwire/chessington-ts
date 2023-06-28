@@ -22,6 +22,6 @@ export default class Knight extends Piece {
         moves.push(Square.at(currentSquare.row - 1, currentSquare.col - 2));
         moves.push(Square.at(currentSquare.row - 1, currentSquare.col + 2));
 
-        return moves;
+        return moves.filter((e: Square) => e.row >= 0 && e.row < 8 && e.col >= 0 && e.col < 8);
     }
 }

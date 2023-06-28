@@ -21,6 +21,6 @@ export default class King extends Piece {
         moves.push(Square.at(currentSquare.row + 1, currentSquare.col));
         moves.push(Square.at(currentSquare.row, currentSquare.col - 1));
 
-        return moves;
+        return moves.filter((e: Square) => e.row >= 0 && e.row < 8 && e.col >= 0 && e.col < 8);
     }
 }

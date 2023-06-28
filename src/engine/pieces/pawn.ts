@@ -16,6 +16,11 @@ export default class Pawn extends Piece {
         let direction = this.player === player.WHITE ? 1 : -1;
 
         const currentSquare = board.findPiece(this);
+
+        if (currentSquare.row == 7 || currentSquare.row == 0) {
+            return moves;
+        }
+
         const oneSquareInFront = Square.at(currentSquare.row + direction, currentSquare.col);
         const pieceOneSquareInFront = board.getPiece(oneSquareInFront);
 
