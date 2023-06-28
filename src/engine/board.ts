@@ -5,7 +5,7 @@ import Piece from './pieces/piece';
 
 export default class Board {
     public currentPlayer: Player;
-    private readonly board: (Piece | undefined)[][];
+    readonly board: (Piece | undefined)[][];
 
     public constructor() {
         this.currentPlayer = Player.WHITE;
