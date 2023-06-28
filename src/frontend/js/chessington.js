@@ -70,6 +70,22 @@ function onDrop(source, target) {
     }
     pieceToMove.moveTo(board, toSquare);
     updateStatus();
+
+    makeBotMove();
+    updateStatus();
+}
+
+function makeBotMove() {
+    let validMoves = [];
+
+    board.board.forEach((piece) => {
+        console.log(piece);
+        if (piece.player === board.currentPlayer) {
+            validMoves = [...validMoves, ...piece.getAvailableMoves(board)];
+        }
+    })
+    console.log(board.board);
+    console.log(validMoves);
 }
 
 function updateStatus() {

@@ -190,4 +190,46 @@ describe('Pawn', () => {
         moves.should.not.deep.include(Square.at(4, 3));
     });
 
+    it('en Passant white', () => {
+        const pawn = new Pawn(Player.WHITE);
+        const opponentPawn = new Pawn(Player.BLACK);
+        board.setPiece(Square.at(6, 3), opponentPawn);
+        board.setPiece(Square.at(3, 4), pawn);
+
+        pawn.moveTo(board, Square.at(4, 4));
+        opponentPawn.moveTo(board, Square.at(4, 3));
+
+        const moves = pawn.getAvailableMoves(board);
+
+        console.log(moves);
+        moves.should.deep.include(Square.at(5, 3));
+    });
+
+    it('en Passant black', () => {
+        const pawn = new Pawn(Player.BLACK);
+        const opponentPawn = new Pawn(Player.WHITE);
+        board.setPiece(Square.at(1, 3), opponentPawn);
+        board.setPiece(Square.at(3, 4), pawn);
+
+        opponentPawn.moveTo(board, Square.at(3, 3));
+
+        const moves = pawn.getAvailableMoves(board);
+
+        moves.should.deep.include(Square.at(2, 3));
+    });
+
+    it('not actually en Passant black', () => {
+        const pawn = new Pawn(Player.BLACK);
+        const opponentPawn = new Pawn(Player.WHITE);
+        board.setPiece(Square.at(1, 3), opponentPawn);
+        board.setPiece(Square.at(3, 4), pawn);
+
+        opponentPawn.moveTo(board, Square.at(3, 3));
+        opponentPawn.moveTo(board, Square.at(4, 3));
+
+        const moves = pawn.getAvailableMoves(board);
+
+        moves.should.not.deep.include(Square.at(2, 3));
+    });
+
 });
