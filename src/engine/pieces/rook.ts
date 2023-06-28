@@ -3,6 +3,7 @@ import Player from '../player';
 import Board from '../board';
 import Square from "../square";
 import player from "../player";
+import King from "./king";
 
 export default class Rook extends Piece {
     public constructor(player: Player) {
@@ -17,7 +18,7 @@ export default class Rook extends Piece {
             let nextSquare = Square.at(currentSquare.row, i);
             let pieceOnSquare = board.getPiece(nextSquare);
             if (pieceOnSquare !== undefined) {
-                if (pieceOnSquare.player != this.player) {
+                if (pieceOnSquare.player != this.player && !(pieceOnSquare instanceof King)) {
                     moves.push(nextSquare);
                 }
                 break;
@@ -28,7 +29,7 @@ export default class Rook extends Piece {
             let nextSquare = Square.at(currentSquare.row, i);
             let pieceOnSquare = board.getPiece(nextSquare);
             if (pieceOnSquare !== undefined) {
-                if (pieceOnSquare.player != this.player) {
+                if (pieceOnSquare.player != this.player && !(pieceOnSquare instanceof King)) {
                     moves.push(nextSquare);
                 }
                 break;
@@ -40,7 +41,7 @@ export default class Rook extends Piece {
             let nextSquare = Square.at(i, currentSquare.col);
             let pieceOnSquare = board.getPiece(nextSquare);
             if (pieceOnSquare !== undefined) {
-                if (pieceOnSquare.player != this.player) {
+                if (pieceOnSquare.player != this.player && !(pieceOnSquare instanceof King)) {
                     moves.push(nextSquare);
                 }
                 break;
@@ -51,7 +52,7 @@ export default class Rook extends Piece {
             let nextSquare = Square.at(i, currentSquare.col);
             let pieceOnSquare = board.getPiece(nextSquare);
             if (pieceOnSquare !== undefined) {
-                if (pieceOnSquare.player != this.player) {
+                if (pieceOnSquare.player != this.player && !(pieceOnSquare instanceof King)) {
                     moves.push(nextSquare);
                 }
                 break;
