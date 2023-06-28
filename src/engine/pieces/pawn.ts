@@ -21,7 +21,6 @@ export default class Pawn extends Piece {
         if (!this.hasMoved) {
             moves.push(Square.at(currentSquare.row + direction * 2, currentSquare.col));
         }
-        console.log(board)
 
         return moves;
     }
