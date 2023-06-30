@@ -78,14 +78,21 @@ function onDrop(source, target) {
 function makeBotMove() {
     let validMoves = [];
 
-    board.board.forEach((piece) => {
-        console.log(piece);
-        if (piece.player === board.currentPlayer) {
-            validMoves = [...validMoves, ...piece.getAvailableMoves(board)];
-        }
+    board.board.forEach((row) => {
+        row.forEach((piece) => {
+            if (!!piece && piece.player === board.currentPlayer) {
+                let moves = piece.getAvailableMoves(board).map((move) => [piece, move])
+                validMoves = validMoves.concat(moves);
+            }
+        })
     })
-    console.log(board.board);
-    console.log(validMoves);
+
+    const randomMoveIndex = Math.floor(Math.random() * validMoves.length);
+    let [piece, move] = validMoves[randomMoveIndex];
+    boardUI.move(squareToPositionString(board.findPiece(piece)) + "-" + squareToPositionString(move));
+    piece.moveTo(board, move);
+
+    window.setTimeout(makeBotMove, 500)
 }
 
 function updateStatus() {
@@ -138,4 +145,6 @@ export function createChessBoard() {
         }
     );
     updateStatus();
+
+    window.setTimeout(makeBotMove, 500)
 }
